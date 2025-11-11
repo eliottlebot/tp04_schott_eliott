@@ -7,8 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { RecapFormComponent } from '../recap-form/recap-form.component';
-import { SignupService } from '../../services/signup.service';
 import { take } from 'rxjs/operators';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -22,16 +22,15 @@ export class SignupFormComponent implements OnInit {
 
   signupFormGroup: FormGroup = new FormGroup({});
 
-  constructor(private signupService: SignupService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.signupFormGroup = new FormGroup({
       login: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      pass: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      name: new FormControl(''),
-      firstname: new FormControl(''),
-      mailAddress: new FormControl('', Validators.required),
+      nom: new FormControl(''),
+      prenom: new FormControl(''),
     });
   }
 
@@ -40,7 +39,7 @@ export class SignupFormComponent implements OnInit {
       alert('Please fill in all required fields.');
       return;
     }
-    this.signupService
+    this.userService
       .signup(this.signupFormGroup.value)
       .pipe(take(1))
       .subscribe((userData) => {
@@ -57,9 +56,8 @@ export class SignupFormComponent implements OnInit {
   checkFormData(): boolean {
     return (
       this.signupFormGroup.value.login &&
-      this.signupFormGroup.value.password &&
-      this.signupFormGroup.value.confirmPassword &&
-      this.signupFormGroup.value.mailAddress
+      this.signupFormGroup.value.pass &&
+      this.signupFormGroup.value.confirmPassword
     );
   }
 }

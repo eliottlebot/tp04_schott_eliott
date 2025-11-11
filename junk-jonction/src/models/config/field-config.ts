@@ -11,7 +11,7 @@ export interface FieldConfig {
 
 export const POLLUTION_FIELDS: FieldConfig[] = [
   {
-    name: 'pollutionTitle',
+    name: 'titre',
     label: 'Titre de la pollution',
     type: 'text',
     placeholder: 'Entrez le titre de la pollution',
@@ -29,7 +29,7 @@ export const POLLUTION_FIELDS: FieldConfig[] = [
     error: 'La description est requise',
   },
   {
-    name: 'date',
+    name: 'date_observation',
     label: "Date de l'observation",
     type: 'date',
     placeholder: "Entrez la date de l'observation",
@@ -38,7 +38,7 @@ export const POLLUTION_FIELDS: FieldConfig[] = [
     error: 'La date est requise',
   },
   {
-    name: 'pollutionType',
+    name: 'type_pollution',
     label: 'Type de la pollution',
     type: 'select',
     required: true,
@@ -47,7 +47,7 @@ export const POLLUTION_FIELDS: FieldConfig[] = [
     error: 'Le type de pollution est requis',
   },
   {
-    name: 'place',
+    name: 'lieu',
     label: 'Lieu de la pollution',
     type: 'text',
     placeholder: 'Entrez le lieu de la pollution',
@@ -74,7 +74,7 @@ export const POLLUTION_FIELDS: FieldConfig[] = [
     error: 'Entrez une longitude valide (exemple : 2.3522)',
   },
   {
-    name: 'photo',
+    name: 'photo_url',
     label: 'Photo de la pollution',
     type: 'text',
     placeholder: "Entrez l'url de la photo",

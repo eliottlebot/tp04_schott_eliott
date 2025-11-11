@@ -34,11 +34,16 @@ exports.getById = (req, res) => {
 };
 
 exports.create = (req, res) => {
+  console.log("Request body:", req.body);
   const pollution = {
-    type: req.body.type,
-    level: req.body.level,
-    location: req.body.location,
-    date: req.body.date,
+    titre: req.body.titre,
+    description: req.body.description,
+    date_observation: req.body.date_observation,
+    type_pollution: req.body.type_pollution,
+    lieu: req.body.lieu,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    photo_url: req.body.photo_url,
   };
 
   Pollution.create(pollution)

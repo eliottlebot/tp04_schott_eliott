@@ -1,17 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { PollutionService } from '../../services/pollution.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { LucideAngularModule, Trash2, Info } from 'lucide-angular';
+import { Pollution } from '../../models/types/Pollution';
+import { PollutionDetailsModal } from '../pollution-details-modal/pollution-details-modal';
 
 @Component({
   selector: 'app-pollution-list',
-  imports: [AsyncPipe, DatePipe, LucideAngularModule],
+  imports: [AsyncPipe, DatePipe, LucideAngularModule, PollutionDetailsModal],
   templateUrl: './pollution-list.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PollutionList {
   pollutionList$: Observable<Pollution[]>;
+  selectedPollution$ = new BehaviorSubject<Pollution | null>(null);
   Trash = Trash2;
   Info = Info;
 
@@ -19,32 +22,27 @@ export class PollutionList {
     this.pollutionList$ = this.pollutionService.getPollutions();
   }
 
-  deletePollution(title: string) {
-    this.pollutionService.deletePollution(title).subscribe(() => {
+  deletePollution(id: number) {
+    this.pollutionService.deletePollution(id).subscribe(() => {
       this.pollutionList$ = this.pollutionService.getPollutions();
     });
   }
-
-  showDetails(title: string) {
-    this.pollutionService.getPollutionDetail(title).subscribe((pollution) => {
-      if (pollution) {
-        alert(
-          `Title: ${pollution.pollutionTitle}\nDescription: ${
-            pollution.description
-          }\nDate: ${pollution.date.toDateString()}\nType: ${pollution.pollutionType}\nPlace: ${
-            pollution.place
-          }\nLatitude: ${pollution.latitude}\nLongitude: ${pollution.longitude}`
-        );
-      } else {
-        alert('Pollution details not found.');
-      }
+  showDetails(id: number) {
+    this.pollutionService.getPollutionDetail(id).subscribe((pollution) => {
+      this.selectedPollution$.next(pollution);
     });
   }
+
+  closeModal = () => {
+    this.selectedPollution$.next(null);
+  };
 
   sortByDate() {
     this.pollutionList$ = this.pollutionList$.pipe(
       map((pollutions) =>
-        [...pollutions].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        [...pollutions].sort(
+          (a, b) => new Date(b.date_observation).getTime() - new Date(a.date_observation).getTime()
+        )
       )
     );
   }

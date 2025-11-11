@@ -75,9 +75,11 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              { "glob": "**/*", "input": "public", "output": "/" },
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "**/*.svg",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
               }
             ],
             "styles": ["src/styles.css"]

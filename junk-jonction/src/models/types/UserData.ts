@@ -1,7 +1,7 @@
 interface UserData {
   id: number;
   login: string;
-  password: string;
-  name: string;
-  mailAddress: string;
+  pass: string;
+  nom: string;
+  prenom: string;
 }

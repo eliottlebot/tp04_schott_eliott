@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { latLongValidator } from '../../models/validators/latitude-longitude.validator';
+import { Pollution } from '../../models/types/Pollution';
 
 @Component({
   selector: 'app-pollution-form',
@@ -32,17 +33,18 @@ export class PollutionFormComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       description: new FormControl('', Validators.required),
-      pollutionTitle: new FormControl('', Validators.required),
-      pollutionType: new FormControl(this.pollutionTypes[0], Validators.required),
-      date: new FormControl(null, Validators.required),
-      place: new FormControl('', Validators.required),
+      titre: new FormControl('', Validators.required),
+      type_pollution: new FormControl(this.pollutionTypes[0], Validators.required),
+      date_observation: new FormControl(null, Validators.required),
+      lieu: new FormControl('', Validators.required),
       latitude: new FormControl('', [Validators.required, latLongValidator()]),
       longitude: new FormControl('', [Validators.required, latLongValidator()]),
-      photo: new FormControl(''),
+      photo_url: new FormControl(''),
     });
   }
 
   onSubmit() {
+    console.log('Form submitted with values:', this.formGroup.value);
     this.submitForm.emit(this.formGroup.value);
   }
 }

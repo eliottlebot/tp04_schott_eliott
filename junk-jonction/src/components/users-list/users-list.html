@@ -1,0 +1,10 @@
+@if(users$ | async; as usersList){
+<h2>Liste des utilisateurs</h2>
+<ul>
+  @for(user of usersList; track $index){
+  <li><strong>Nom d'utilisateur :</strong> {{ user.nom }} <br /></li>
+  }
+</ul>
+} @else {
+<p>Chargement des utilisateurs...</p>
+}

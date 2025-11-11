@@ -3,7 +3,7 @@
   <label for="login">Login</label>
   <input id="login" formControlName="login" type="text" class="bg-white p-2 rounded-lg" />
   <label for="password">Password</label>
-  <input id="password" formControlName="password" type="password" class="bg-white p-2 rounded-lg" />
+  <input id="password" formControlName="pass" type="password" class="bg-white p-2 rounded-lg" />
   <label for="confirmPassword">Confirm Password </label>
   <input
     id="confirmPassword"
@@ -12,16 +12,9 @@
     class="bg-white p-2 rounded-lg"
   />
   <label for="name">Name</label>
-  <input id="name" formControlName="name" type="text" class="bg-white p-2 rounded-lg" />
+  <input id="name" formControlName="nom" type="text" class="bg-white p-2 rounded-lg" />
   <label for="firstname">First Name</label>
-  <input id="firstname" formControlName="firstname" type="text" class="bg-white p-2 rounded-lg" />
-  <label for="mailAddress">Mail Address</label>
-  <input
-    id="mailAddress"
-    formControlName="mailAddress"
-    type="email"
-    class="bg-white p-2 rounded-lg"
-  />
+  <input id="firstname" formControlName="prenom" type="text" class="bg-white p-2 rounded-lg" />
   <button (click)="onSubmit()" type="button">Sign Up</button>
 </form>
 @if(showRecap){

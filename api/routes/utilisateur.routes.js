@@ -4,7 +4,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.post("/login", utilisateur.login);
-  router.post("/register", utilisateur.register);
+  router.post("/signup", utilisateur.register);
   router.get("/", utilisateur.getAll);
 
   app.use("/api/utilisateur", router);
