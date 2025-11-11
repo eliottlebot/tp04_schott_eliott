@@ -4,6 +4,10 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.get("/", pollution.get);
+  router.get("/:id", pollution.getById);
+  router.post("/", pollution.create);
+  router.put("/:id", pollution.update);
+  router.delete("/:id", pollution.delete);
 
   app.use("/api/pollutions", router);
 };
