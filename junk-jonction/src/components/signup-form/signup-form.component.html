@@ -1,0 +1,32 @@
+<h1 class="text-center">{{ formTitle }}</h1>
+<form [formGroup]="signupFormGroup" class="bg-slate-50 p-8 rounded-lg flex flex-col gap-8">
+  <label for="login">Login</label>
+  <input id="login" formControlName="login" type="text" class="bg-white p-2 rounded-lg" />
+  <label for="password">Password</label>
+  <input id="password" formControlName="password" type="password" class="bg-white p-2 rounded-lg" />
+  <label for="confirmPassword">Confirm Password </label>
+  <input
+    id="confirmPassword"
+    formControlName="confirmPassword"
+    type="password"
+    class="bg-white p-2 rounded-lg"
+  />
+  <label for="name">Name</label>
+  <input id="name" formControlName="name" type="text" class="bg-white p-2 rounded-lg" />
+  <label for="firstname">First Name</label>
+  <input id="firstname" formControlName="firstname" type="text" class="bg-white p-2 rounded-lg" />
+  <label for="mailAddress">Mail Address</label>
+  <input
+    id="mailAddress"
+    formControlName="mailAddress"
+    type="email"
+    class="bg-white p-2 rounded-lg"
+  />
+  <button (click)="onSubmit()" type="button">Sign Up</button>
+</form>
+@if(showRecap){
+<app-recap-form
+  [formData]="signupFormGroup.value"
+  (handleResetForm)="handleResetForm()"
+></app-recap-form>
+}

@@ -1,0 +1,39 @@
+<div class="bg-slate-50 rounded-xl p-6 border-2 border-slate-100">
+  <div class="bg-linear-to-r from-green-500 to-slate-50/75 overflow-hidden rounded-t-xl p-2">
+    {{ pollutionData?.pollutionTitle }}
+  </div>
+  <div class="flex flex-col gap-4 mt-4">
+    <div class="flex justify-between">
+      <span class="font-medium text-gray-700">Type de pollution:</span>
+      <span class="text-gray-900">{{ pollutionData?.pollutionType }}</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="font-medium text-gray-700">Description:</span>
+      <span class="text-gray-900">{{ pollutionData?.description }}</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="font-medium text-gray-700">Latitude / Longitude:</span>
+      <span class="text-gray-900"
+        >{{ pollutionData?.latitude }} : {{ pollutionData?.longitude }}</span
+      >
+    </div>
+    <div class="flex justify-between">
+      <span class="font-medium text-gray-700">Date de signalement:</span>
+      <span class="text-gray-900">{{ pollutionData?.date | date : 'longDate' }}</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="font-medium text-gray-700">Photo :</span>
+      <div class="ml-4">
+        @if(pollutionData?.photo){
+        <img
+          [src]="pollutionData?.photo"
+          alt="Photo de la pollution"
+          class="max-h-40 w-auto rounded-md border border-gray-200 object-contain"
+        />
+        } @else {
+        <span class="text-gray-500">Aucune image fournie</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

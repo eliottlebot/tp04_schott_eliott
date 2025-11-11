@@ -1,0 +1,54 @@
+<header
+  class="flex items-center justify-between gap-4 px-5 py-3 bg-gradient-to-t from-green-600 to-green-500 text-white shadow-md"
+  role="banner"
+>
+  <a class="inline-flex items-center no-underline" routerLink="/" aria-label="Retour à l'accueil">
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      class="rounded-md"
+    >
+      <circle cx="12" cy="12" r="10" fill="#1F6B29" />
+      <path
+        d="M7 12h10M12 7v10"
+        stroke="#ffffff"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </a>
+
+  <div class="text-base font-semibold hidden sm:block">Déclaration de pollutions</div>
+
+  <nav class="flex items-center" role="navigation" aria-label="Navigation principale">
+    <a
+      class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg font-medium hover:bg-white/20 no-underline text-white"
+      routerLink="pollution/list"
+      aria-label="Liste des pollutions"
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 6h18M3 12h18M3 18h18"
+          stroke="#fff"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <span class="hidden sm:inline">Liste des pollutions</span>
+    </a>
+  </nav>
+</header>
